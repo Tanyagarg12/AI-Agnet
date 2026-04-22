@@ -1,0 +1,442 @@
+{
+    "run_id": "GP-20260416-142117",
+    "status": "completed",
+    "ticket_id": "KAN-4",
+    "title": "Automate login and verify each main page loads correctly in OrangeHRM after successful authentication",
+    "framework": "playwright-typescript",
+    "language": "typescript",
+    "vcs_provider": "github",
+    "test_scope": "ui",
+    "app_url": "https://opensource-demo.orangehrmlive.com/",
+    "env": "staging",
+    "project_root": "C:/Users/DELL/Desktop/aiAgnet/AI-Agnet",
+    "branch_name": "test/KAN-4-orangehrm-navigation",
+    "pr_target_branch": "main",
+    "complexity": "M",
+    "no_browse": false,
+    "test_file_path": "tests/orangehrm-navigation.spec.ts",
+    "scenarios": [
+        {
+            "id": 1,
+            "title": "Login with valid credentials",
+            "preconditions": [
+                "OrangeHRM demo site is accessible at https://opensource-demo.orangehrmlive.com/",
+                "Valid credentials: Username=Admin, Password=admin123"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Navigate to https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+                    "expected": "Login page loads, username and password fields are visible"
+                },
+                {
+                    "step": 2,
+                    "action": "Enter 'Admin' in the username field",
+                    "expected": "Username field contains 'Admin'"
+                },
+                {
+                    "step": 3,
+                    "action": "Enter 'admin123' in the password field",
+                    "expected": "Password field is populated (masked)"
+                },
+                {
+                    "step": 4,
+                    "action": "Click the Login button",
+                    "expected": "Authentication succeeds, user is redirected to dashboard URL"
+                },
+                {
+                    "step": 5,
+                    "action": "Verify dashboard page has loaded",
+                    "expected": "URL contains '/dashboard/index', page title or heading confirms dashboard view"
+                }
+            ],
+            "edge_cases": [
+                "Login form shows validation error for empty credentials",
+                "Incorrect password shows 'Invalid credentials' message",
+                "Page does not hang — login completes within 30s timeout"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Verify Dashboard (home) page loads after login",
+            "preconditions": [
+                "User is already logged in"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Navigate to dashboard via sidebar or URL /web/index.php/dashboard/index",
+                    "expected": "Dashboard page is active"
+                },
+                {
+                    "step": 2,
+                    "action": "Assert dashboard header or widget container is visible",
+                    "expected": "At least one dashboard widget or heading element is visible on screen"
+                }
+            ],
+            "edge_cases": [
+                "Dashboard shows 'Time at Work' or similar widgets — assert any widget present"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Verify Admin page loads",
+            "preconditions": [
+                "User is logged in as Admin"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Click 'Admin' in the left sidebar navigation menu",
+                    "expected": "Admin page is active, URL contains '/web/index.php/admin/viewSystemUsers'"
+                },
+                {
+                    "step": 2,
+                    "action": "Assert the 'User Management' heading or table is visible",
+                    "expected": "Admin page content (User Management section) is displayed"
+                }
+            ],
+            "edge_cases": [
+                "Non-admin users would not see this menu — test runs as Admin so it should always be visible"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Verify PIM page loads",
+            "preconditions": [
+                "User is logged in"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Click 'PIM' in the left sidebar navigation menu",
+                    "expected": "PIM page is active, URL contains '/web/index.php/pim/viewEmployeeList'"
+                },
+                {
+                    "step": 2,
+                    "action": "Assert the Employee List heading or table is visible",
+                    "expected": "PIM employee list grid is displayed"
+                }
+            ],
+            "edge_cases": [
+                "Employee list may be empty in demo — assert heading, not row count"
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Verify Leave page loads",
+            "preconditions": [
+                "User is logged in"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Click 'Leave' in the left sidebar navigation menu",
+                    "expected": "Leave page is active, URL contains '/web/index.php/leave'"
+                },
+                {
+                    "step": 2,
+                    "action": "Assert Leave list heading or filter panel is visible",
+                    "expected": "Leave module content is rendered correctly"
+                }
+            ],
+            "edge_cases": []
+        },
+        {
+            "id": 6,
+            "title": "Verify Time page loads",
+            "preconditions": [
+                "User is logged in"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Click 'Time' in the left sidebar navigation menu",
+                    "expected": "Time page is active, URL contains '/web/index.php/time'"
+                },
+                {
+                    "step": 2,
+                    "action": "Assert Time module heading or timesheet table is visible",
+                    "expected": "Time module renders without error"
+                }
+            ],
+            "edge_cases": []
+        },
+        {
+            "id": 7,
+            "title": "Verify Recruitment page loads",
+            "preconditions": [
+                "User is logged in"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Click 'Recruitment' in the left sidebar navigation menu",
+                    "expected": "Recruitment page is active, URL contains '/web/index.php/recruitment'"
+                },
+                {
+                    "step": 2,
+                    "action": "Assert vacancy list or Recruitment heading is visible",
+                    "expected": "Recruitment module renders without error"
+                }
+            ],
+            "edge_cases": []
+        },
+        {
+            "id": 8,
+            "title": "Verify My Info page loads",
+            "preconditions": [
+                "User is logged in"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Click 'My Info' in the left sidebar navigation menu",
+                    "expected": "My Info page is active, URL contains '/web/index.php/pim/viewMyDetails'"
+                },
+                {
+                    "step": 2,
+                    "action": "Assert personal details form or employee name heading is visible",
+                    "expected": "My Info page shows the current user's profile form"
+                }
+            ],
+            "edge_cases": []
+        },
+        {
+            "id": 9,
+            "title": "Verify Performance page loads",
+            "preconditions": [
+                "User is logged in"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Click 'Performance' in the left sidebar navigation menu",
+                    "expected": "Performance page is active, URL contains '/web/index.php/performance'"
+                },
+                {
+                    "step": 2,
+                    "action": "Assert KPI or Manage Reviews heading is visible",
+                    "expected": "Performance module renders without error"
+                }
+            ],
+            "edge_cases": []
+        },
+        {
+            "id": 10,
+            "title": "Verify Directory page loads",
+            "preconditions": [
+                "User is logged in"
+            ],
+            "steps": [
+                {
+                    "step": 1,
+                    "action": "Click 'Directory' in the left sidebar navigation menu",
+                    "expected": "Directory page is active, URL contains '/web/index.php/directory'"
+                },
+                {
+                    "step": 2,
+                    "action": "Assert employee directory cards or search panel is visible",
+                    "expected": "Directory module renders without error"
+                }
+            ],
+            "edge_cases": [
+                "Directory may show zero results in demo — assert the search/filter panel, not the card count"
+            ]
+        }
+    ],
+    "target_pages": [
+        "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+        "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
+        "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers",
+        "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
+        "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList",
+        "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet",
+        "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates",
+        "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewMyDetails",
+        "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchPerformanceTrack",
+        "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory"
+    ],
+    "pom_pages_needed": [
+        {
+            "name": "LoginPage",
+            "file": "pages/LoginPage.ts",
+            "url": "/web/index.php/auth/login",
+            "is_new": true,
+            "responsibilities": [
+                "Navigate to login URL",
+                "Fill username field",
+                "Fill password field",
+                "Click login button",
+                "Wait for post-login redirect",
+                "Assert login page is visible"
+            ]
+        },
+        {
+            "name": "DashboardPage",
+            "file": "pages/DashboardPage.ts",
+            "url": "/web/index.php/dashboard/index",
+            "is_new": true,
+            "responsibilities": [
+                "Assert dashboard heading or widget is visible",
+                "Confirm URL matches dashboard path"
+            ]
+        },
+        {
+            "name": "SidebarNav",
+            "file": "pages/SidebarNav.ts",
+            "url": "global (present on all authenticated pages)",
+            "is_new": true,
+            "responsibilities": [
+                "Click named menu item by text label",
+                "Wait for navigation to settle after click",
+                "Return current active page URL for assertion"
+            ]
+        },
+        {
+            "name": "AdminPage",
+            "file": "pages/AdminPage.ts",
+            "url": "/web/index.php/admin/viewSystemUsers",
+            "is_new": true,
+            "responsibilities": [
+                "Assert User Management heading is visible",
+                "Confirm URL matches admin path"
+            ]
+        },
+        {
+            "name": "PimPage",
+            "file": "pages/PimPage.ts",
+            "url": "/web/index.php/pim/viewEmployeeList",
+            "is_new": true,
+            "responsibilities": [
+                "Assert Employee List heading or table is visible",
+                "Confirm URL matches PIM path"
+            ]
+        },
+        {
+            "name": "LeavePage",
+            "file": "pages/LeavePage.ts",
+            "url": "/web/index.php/leave/viewLeaveList",
+            "is_new": true,
+            "responsibilities": [
+                "Assert Leave module heading or panel is visible",
+                "Confirm URL matches leave path"
+            ]
+        },
+        {
+            "name": "TimePage",
+            "file": "pages/TimePage.ts",
+            "url": "/web/index.php/time/viewEmployeeTimesheet",
+            "is_new": true,
+            "responsibilities": [
+                "Assert Time module heading or timesheet is visible",
+                "Confirm URL matches time path"
+            ]
+        },
+        {
+            "name": "RecruitmentPage",
+            "file": "pages/RecruitmentPage.ts",
+            "url": "/web/index.php/recruitment/viewCandidates",
+            "is_new": true,
+            "responsibilities": [
+                "Assert Recruitment heading or vacancy list is visible",
+                "Confirm URL matches recruitment path"
+            ]
+        },
+        {
+            "name": "MyInfoPage",
+            "file": "pages/MyInfoPage.ts",
+            "url": "/web/index.php/pim/viewMyDetails",
+            "is_new": true,
+            "responsibilities": [
+                "Assert personal details form or user name is visible",
+                "Confirm URL matches My Info path"
+            ]
+        },
+        {
+            "name": "PerformancePage",
+            "file": "pages/PerformancePage.ts",
+            "url": "/web/index.php/performance/searchPerformanceTrack",
+            "is_new": true,
+            "responsibilities": [
+                "Assert Performance module heading is visible",
+                "Confirm URL matches performance path"
+            ]
+        },
+        {
+            "name": "DirectoryPage",
+            "file": "pages/DirectoryPage.ts",
+            "url": "/web/index.php/directory/viewDirectory",
+            "is_new": true,
+            "responsibilities": [
+                "Assert Directory search panel or card container is visible",
+                "Confirm URL matches directory path"
+            ]
+        }
+    ],
+    "helpers_needed": [
+        {
+            "name": "loginAs",
+            "file": "helpers/auth.ts",
+            "description": "Perform full login flow: navigate to login page, fill credentials, click login, wait for dashboard URL. Accepts username and password as parameters.",
+            "is_new": true
+        },
+        {
+            "name": "navigateToModule",
+            "file": "helpers/navigation.ts",
+            "description": "Click a named sidebar menu item and wait for the resulting page URL to stabilize. Returns the final URL for assertion. Accepts menu label string.",
+            "is_new": true
+        },
+        {
+            "name": "assertPageLoaded",
+            "file": "helpers/navigation.ts",
+            "description": "Generic assertion that a given URL pattern is present in the current page URL and a key heading or container selector is visible. Accepts url substring and selector.",
+            "is_new": true
+        }
+    ],
+    "config_separation": {
+        "selector_file": "config/selectors/orangehrm.json",
+        "env_config": "config/environments.json",
+        "test_data": "config/test-data.json"
+    },
+    "selector_strategy": {
+        "primary": "css [data-v-*] or input[name='username'] — OrangeHRM Vue app uses name attributes and class-based selectors; prefer name attributes and aria-labels as stable anchors",
+        "secondary": "CSS class selectors scoped to component containers where name/aria unavailable",
+        "navigation": "text-based: page.getByRole('link', { name: 'Admin' }) or page.getByText() for sidebar items",
+        "notes": [
+            "OrangeHRM demo does not use data-testid attributes — rely on input[name], role selectors, and visible text",
+            "Sidebar nav items can be selected via getByRole('link', { name }) — most stable across versions",
+            "Page headings confirm module load — use getByRole('heading') with expected text",
+            "After sidebar click, wait for URL change with page.waitForURL() before asserting content"
+        ]
+    },
+    "reporting": ["html", "junit"],
+    "framework_config": {
+        "framework_id": "playwright-typescript",
+        "display_name": "Playwright (TypeScript)",
+        "language": "typescript",
+        "file_ext": "ts",
+        "test_runner": "playwright",
+        "tests_dir": "tests/",
+        "pages_dir": "pages/",
+        "helpers_dir": "helpers/",
+        "selectors_dir": "config/selectors/",
+        "config_file": "playwright.config.ts",
+        "run_command": "npx playwright test tests/orangehrm-navigation.spec.ts --reporter=junit,html",
+        "result_format": "junit-xml",
+        "result_file_pattern": "test-results/results.xml",
+        "timeout_ms": 30000,
+        "retries": 1,
+        "parallel": false,
+        "test_describe_mode": "serial",
+        "module_system": "esm",
+        "strict_typing": true,
+        "use_page_object_model": true,
+        "assertion_messages_required": true
+    },
+    "auto_selected": false,
+    "selection_reasoning": "playwright-typescript was explicitly provided via FRAMEWORK_OVERRIDE. It is well-suited for this UI navigation test: TypeScript strict typing enables safe POM class composition, Playwright's waitForURL() and getByRole() APIs handle SPA navigation reliably, and the serial test mode matches the sequential login-then-navigate flow required by this ticket.",
+    "completed_stages": ["intake", "plan"],
+    "current_stage": "scaffold",
+    "created_at": "2026-04-16T14:21:50Z"
+}

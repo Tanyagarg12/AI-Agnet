@@ -1,0 +1,27 @@
+{
+    "description": "Policy for fix-failures pipeline. Inherits from _common.json.",
+    "filesystem": {
+        "read": ["$E2E_FRAMEWORK_PATH/**"],
+        "write": [
+            "$E2E_FRAMEWORK_PATH/tests/**",
+            "$E2E_FRAMEWORK_PATH/actions/**",
+            "$E2E_FRAMEWORK_PATH/selectors/**"
+        ]
+    },
+    "git": {
+        "branch_prefix": "fix/maintenance-",
+        "mr_target": "developmentV2"
+    },
+    "exec": {
+        "allow_patterns": [
+            "envFile=* npx playwright test *",
+            "node .claude/skills/chrome-cdp/scripts/cdp.mjs *",
+            "playwright-cli *",
+            "glab mr create *",
+            "git *",
+            "curl *",
+            "find */tests/ -name *",
+            "bash scripts/fetch-dashboard-failures.sh *"
+        ]
+    }
+}

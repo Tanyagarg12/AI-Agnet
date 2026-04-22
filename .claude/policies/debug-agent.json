@@ -1,0 +1,39 @@
+{
+    "agent": "debug-agent",
+    "model": "opus",
+    "max_turns": 40,
+    "filesystem": {
+        "read": ["tests/**", "actions/**", "selectors/**", "utils/**", "memory/tickets/*", "test-results/**"],
+        "write": ["tests/**", "actions/**", "selectors/**", "memory/tickets/*/debug-history.md", "memory/tickets/*/debug-output.json", "memory/tickets/*/test-results.json", "memory/tickets/*/checkpoint.json", "memory/tickets/*/audit.md"]
+    },
+    "network": {
+        "allowed": ["stg.app.ox.security", "dev.app.ox.security"]
+    },
+    "jira": { "read": true, "write": true },
+    "git": { "read": true, "write": true },
+    "required_outputs": [
+        { "file": "debug-output.json", "schema": "debug" },
+        { "file": "debug-history.md", "schema": null }
+    ],
+    "credentials": ["$STAGING_URL", "$STAGING_USER", "$STAGING_PASSWORD"],
+    "exec": {
+        "allow_patterns": [
+            "playwright-cli *",
+            "node .claude/skills/chrome-cdp/scripts/cdp.mjs *",
+            "envFile=* npx playwright test*",
+            "npx playwright test*",
+            "npx playwright show-trace *",
+            "git *",
+            "cd *",
+            "find *",
+            "ls *",
+            "cat *",
+            "head *",
+            "unzip *",
+            "python3 *",
+            "mkdir *",
+            "acli jira *",
+            "./scripts/report-to-dashboard.sh *"
+        ]
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "ai-agnet",
+  "version": "1.0.0",
+  "description": "Production-grade, multi-agent QA system that autonomously generates, runs, and debugs E2E tests. Works with **any ticket system** (Jira, GitHub Issues, Azure DevOps, Linear, ServiceNow), **any Git provider** (GitHub, GitLab, Bitbucket), and **any testing framework** (Playwright, Cypress, Selenium, Puppeteer, TestCafe, Appium, Robot Framework). Powered by Claude Code Agent Teams.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanyagarg12/AI-Agnet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanyagarg12/AI-Agnet/issues"
+  },
+  "homepage": "https://github.com/Tanyagarg12/AI-Agnet#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  }
+}

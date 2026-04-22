@@ -1,0 +1,29 @@
+{
+    "scan_counter": 1,
+    "services": {
+        "frontend": {
+            "project_id": 30407646,
+            "target_branch": "main",
+            "last_scanned_at": "2026-03-13T10:05:00Z",
+            "last_mr_merged_at": "2026-03-13T10:34:17.812Z"
+        },
+        "connectors": {
+            "project_id": 30667022,
+            "target_branch": "main",
+            "last_scanned_at": "2026-03-13T10:05:00Z",
+            "last_mr_merged_at": "2026-03-11T15:53:49.937Z"
+        },
+        "settings-service": {
+            "project_id": 43885247,
+            "target_branch": "main",
+            "last_scanned_at": "2026-03-13T10:05:00Z",
+            "last_mr_merged_at": "2026-03-11T12:15:09.194Z"
+        },
+        "report-service": {
+            "project_id": 30966426,
+            "target_branch": "main",
+            "last_scanned_at": "2026-03-13T10:05:00Z",
+            "last_mr_merged_at": "2026-03-11T17:27:47.886Z"
+        }
+    }
+}

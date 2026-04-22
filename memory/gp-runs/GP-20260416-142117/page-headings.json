@@ -1,0 +1,184 @@
+{
+  "Admin": {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers",
+    "captured": {
+      "h6_texts": [
+        "Admin",
+        "User Management"
+      ],
+      "breadcrumb_text": "AdminUser Management",
+      "breadcrumb_css": ".oxd-topbar-header-breadcrumb",
+      "main_heading": {
+        "text": "Admin",
+        "css": "h6",
+        "xpath": "//h6"
+      },
+      "topbar_title": "AdminUser Management",
+      "has_table": true,
+      "widget_count": 0,
+      "content_container": ".oxd-layout-context"
+    }
+  },
+  "PIM": {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
+    "captured": {
+      "h6_texts": [
+        "PIM"
+      ],
+      "breadcrumb_text": "PIM",
+      "breadcrumb_css": ".oxd-topbar-header-breadcrumb",
+      "main_heading": {
+        "text": "PIM",
+        "css": "h6",
+        "xpath": "//h6"
+      },
+      "topbar_title": "PIM",
+      "has_table": true,
+      "widget_count": 0,
+      "content_container": ".oxd-layout-context"
+    }
+  },
+  "Leave": {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList",
+    "captured": {
+      "h6_texts": [
+        "Leave"
+      ],
+      "breadcrumb_text": "Leave",
+      "breadcrumb_css": ".oxd-topbar-header-breadcrumb",
+      "main_heading": {
+        "text": "Leave",
+        "css": "h6",
+        "xpath": "//h6"
+      },
+      "topbar_title": "Leave",
+      "has_table": true,
+      "widget_count": 0,
+      "content_container": ".oxd-layout-context"
+    }
+  },
+  "Time": {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet",
+    "captured": {
+      "h6_texts": [
+        "Time",
+        "Timesheets",
+        "Select Employee",
+        "Timesheets Pending Action"
+      ],
+      "breadcrumb_text": "TimeTimesheets",
+      "breadcrumb_css": ".oxd-topbar-header-breadcrumb",
+      "main_heading": {
+        "text": "Select Employee",
+        "css": "h6",
+        "xpath": "//h6"
+      },
+      "topbar_title": "TimeTimesheets",
+      "has_table": true,
+      "widget_count": 0,
+      "content_container": ".oxd-layout-context"
+    }
+  },
+  "Recruitment": {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates",
+    "captured": {
+      "h6_texts": [
+        "Recruitment"
+      ],
+      "breadcrumb_text": "Recruitment",
+      "breadcrumb_css": ".oxd-topbar-header-breadcrumb",
+      "main_heading": {
+        "text": "Recruitment",
+        "css": "h6",
+        "xpath": "//h6"
+      },
+      "topbar_title": "Recruitment",
+      "has_table": true,
+      "widget_count": 0,
+      "content_container": ".oxd-layout-context"
+    }
+  },
+  "My Info": {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7",
+    "captured": {
+      "h6_texts": [
+        "PIM",
+        "NeymarNeymar DeSilva",
+        "Personal Details",
+        "Custom Fields",
+        "Attachments"
+      ],
+      "breadcrumb_text": "PIM",
+      "breadcrumb_css": ".oxd-topbar-header-breadcrumb",
+      "main_heading": {
+        "text": "NeymarNeymar DeSilva",
+        "css": "h6",
+        "xpath": "//h6"
+      },
+      "topbar_title": "PIM",
+      "has_table": true,
+      "widget_count": 0,
+      "content_container": ".oxd-layout-context"
+    }
+  },
+  "Performance": {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview",
+    "captured": {
+      "h6_texts": [
+        "Performance",
+        "Manage Reviews"
+      ],
+      "breadcrumb_text": "PerformanceManage Reviews",
+      "breadcrumb_css": ".oxd-topbar-header-breadcrumb",
+      "main_heading": {
+        "text": "Performance",
+        "css": "h6",
+        "xpath": "//h6"
+      },
+      "topbar_title": "PerformanceManage Reviews",
+      "has_table": true,
+      "widget_count": 0,
+      "content_container": ".oxd-layout-context"
+    }
+  },
+  "Dashboard": {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
+    "captured": {
+      "h6_texts": [
+        "Dashboard"
+      ],
+      "breadcrumb_text": "Dashboard",
+      "breadcrumb_css": ".oxd-topbar-header-breadcrumb",
+      "main_heading": {
+        "text": "Dashboard",
+        "css": "h6",
+        "xpath": "//h6"
+      },
+      "topbar_title": "Dashboard",
+      "has_table": false,
+      "widget_count": 14,
+      "widget_selector": ".orangehrm-dashboard-widget",
+      "widget_titles": [],
+      "content_container": ".oxd-layout-context"
+    }
+  },
+  "Directory": {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory",
+    "captured": {
+      "h6_texts": [
+        "Directory"
+      ],
+      "breadcrumb_text": "Directory",
+      "breadcrumb_css": ".oxd-topbar-header-breadcrumb",
+      "main_heading": {
+        "text": "Directory",
+        "css": "h6",
+        "xpath": "//h6"
+      },
+      "topbar_title": "Directory",
+      "has_table": false,
+      "widget_count": 0,
+      "content_container": ".oxd-layout-context"
+    }
+  }
+}

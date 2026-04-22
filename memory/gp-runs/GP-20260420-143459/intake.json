@@ -1,0 +1,28 @@
+{
+    "run_id": "GP-20260420-143459",
+    "ticket_input": "KAN-4",
+    "platform": "jira-any",
+    "ticket": {
+        "key": "KAN-4",
+        "title": "OrangeHRM Navigation Test",
+        "description": "Verify that a user can log in to OrangeHRM and navigate to each main module via the sidebar menu, confirming each page loads with the correct URL pattern and heading.",
+        "type": "Test",
+        "priority": "Medium",
+        "status": "To Do",
+        "acceptance_criteria": [
+            "User can navigate to login page",
+            "User can login with valid credentials",
+            "User can navigate to Admin module via sidebar",
+            "User can navigate to PIM module via sidebar",
+            "User can navigate to Leave module via sidebar",
+            "User can navigate to Time module via sidebar",
+            "User can navigate to Recruitment module via sidebar",
+            "User can navigate to My Info module via sidebar",
+            "User can navigate to Performance module via sidebar",
+            "User can navigate to Dashboard module via sidebar",
+            "User can navigate to Directory module via sidebar",
+            "Each module page loads with correct URL and heading"
+        ]
+    },
+    "normalized_at": "2026-04-20T14:35:00Z"
+}

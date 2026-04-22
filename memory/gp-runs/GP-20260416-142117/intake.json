@@ -1,0 +1,45 @@
+{
+    "run_id": "GP-20260416-142117",
+    "ticket_id": "KAN-4",
+    "platform": "jira-any",
+    "title": "Automate login and verify each main page loads correctly in OrangeHRM after successful authentication.",
+    "description": "Validate that the OrangeHRM demo application works correctly after login. The test should ensure: User can successfully log in, each main page is accessible after login, each page returns a valid response (status + UI load check). This will help ensure core navigation is stable for regression testing.",
+    "type": "Task",
+    "priority": "Medium",
+    "status": "To Do",
+    "project": "KAN",
+    "app_url": "https://opensource-demo.orangehrmlive.com/",
+    "preconditions": [
+        "Valid demo credentials: Username=Admin, Password=admin123"
+    ],
+    "test_steps": [
+        "Open OrangeHRM demo site",
+        "Enter username and password",
+        "Click Login",
+        "Verify dashboard loads successfully",
+        "Navigate and verify Admin page",
+        "Navigate and verify PIM page",
+        "Navigate and verify Leave page",
+        "Navigate and verify Time page",
+        "Navigate and verify Recruitment page",
+        "Navigate and verify My Info page",
+        "Navigate and verify Performance page",
+        "Navigate and verify Dashboard (home) page",
+        "Navigate and verify Directory page"
+    ],
+    "expected_results": [
+        "User should be logged in successfully",
+        "Dashboard should load without errors",
+        "Each module/page should load without crash",
+        "Each module/page should display correct UI components",
+        "No broken links or blank pages"
+    ],
+    "acceptance_criteria": [
+        "Login automation passes consistently",
+        "All main modules are accessible",
+        "No navigation failures or UI errors",
+        "Test can run in CI pipeline (if automated)"
+    ],
+    "labels": [],
+    "fetched_at": "2026-04-16T14:21:30Z"
+}

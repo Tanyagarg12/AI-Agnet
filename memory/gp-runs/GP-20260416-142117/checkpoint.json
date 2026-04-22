@@ -1,0 +1,24 @@
+{
+    "run_id": "GP-20260416-142117",
+    "ticket_input": "KAN-4",
+    "pipeline": ["intake", "plan", "scaffold", "browse", "codegen", "run", "report", "debug", "pr", "learn"],
+    "completed_stages": ["intake", "plan", "scaffold", "browse"],
+    "current_stage": "codegen",
+    "status": "in_progress",
+    "flags": {
+        "auto": true,
+        "platform": "jira-any",
+        "framework": "playwright-typescript",
+        "vcs": "github",
+        "project_path": "C:/Users/DELL/Desktop/aiAgnet/AI-Agnet",
+        "env": "staging"
+    },
+    "stage_outputs": {
+        "intake": "memory/gp-runs/GP-20260416-142117/intake.json",
+        "plan": "memory/gp-runs/GP-20260416-142117/plan.json",
+        "scaffold": "memory/gp-runs/GP-20260416-142117/scaffold.json",
+        "browse": "memory/gp-runs/GP-20260416-142117/browser-data.json"
+    },
+    "branch_name": "test/KAN-4-orangehrm-navigation",
+    "last_updated": "2026-04-16T14:32:00Z"
+}

@@ -1,0 +1,34 @@
+{
+    "_extends": "gp-common.json",
+    "description": "GP Code Generator Agent — writes test code in target framework/language",
+    "filesystem": {
+        "read_allowed_extra": [
+            "memory/gp-runs/*/plan.json",
+            "memory/gp-runs/*/scaffold.json",
+            "memory/gp-runs/*/browser-data.json",
+            "templates/gp/codegen/**",
+            "templates/gp/pom/**",
+            "memory/gp/framework-patterns.md"
+        ],
+        "write_allowed_extra": [
+            "memory/gp-runs/*/codegen.json",
+            "memory/gp-runs/*/checkpoint.json",
+            "memory/gp-runs/*/audit.md"
+        ],
+        "project_write": "Can write to any path within the project_root defined in plan.json"
+    },
+    "git": {
+        "commit_required": "Must commit after every logical unit (selectors, pages, helpers, tests)",
+        "commit_message_pattern": "feat(*): <ticket_id> - <description>"
+    },
+    "code_generation_rules": {
+        "no_hardcoded_credentials": true,
+        "no_hardcoded_urls": true,
+        "no_sleep_calls": true,
+        "pom_required": true,
+        "selectors_in_json_file": true,
+        "assertion_messages_required": true,
+        "env_vars_for_config": true
+    },
+    "max_turns": 60
+}

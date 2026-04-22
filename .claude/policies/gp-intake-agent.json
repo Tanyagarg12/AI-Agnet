@@ -1,0 +1,33 @@
+{
+    "_extends": "gp-common.json",
+    "description": "GP Intake Agent — reads tickets from any platform",
+    "filesystem": {
+        "write_allowed_extra": [
+            "memory/gp-runs/*/intake.json",
+            "memory/gp-runs/*/raw-ticket.json",
+            "memory/gp-runs/*/checkpoint.json",
+            "memory/gp-runs/*/audit.md"
+        ]
+    },
+    "network": {
+        "required_outbound": [
+            "jira API (JIRA_BASE_URL)",
+            "dev.azure.com (ADO_ORG)",
+            "api.github.com",
+            "api.linear.app",
+            "*.service-now.com"
+        ]
+    },
+    "exec": {
+        "allow_extra": [
+            "./scripts/gp-detect-platform.sh *",
+            "acli jira workitem view *"
+        ]
+    },
+    "required_outputs": {
+        "intake.json": {
+            "required_fields": ["run_id", "status", "source_platform", "ticket_id", "title", "description"]
+        }
+    },
+    "max_turns": 15
+}

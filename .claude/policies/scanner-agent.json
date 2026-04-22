@@ -1,0 +1,29 @@
+{
+    "agent": "scanner-agent",
+    "model": "haiku",
+    "max_turns": 10,
+    "filesystem": {
+        "read": ["memory/discovery/**"],
+        "write": ["memory/discovery/scans/*/scanner-*.json", "memory/discovery/scans/*/audit.md"]
+    },
+    "network": {
+        "allowed": ["gitlab.com"]
+    },
+    "jira": { "read": false, "write": false },
+    "git": { "read": false, "write": false },
+    "required_outputs": [
+        { "file": "scanner-output.json", "schema": null }
+    ],
+    "credentials": [],
+    "exec": {
+        "allow_patterns": [
+            "glab *",
+            "./scripts/gitlab-retry.sh *",
+            "curl *",
+            "python3 *",
+            "cat *",
+            "mkdir *",
+            "jq *"
+        ]
+    }
+}

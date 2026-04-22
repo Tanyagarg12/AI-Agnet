@@ -1,0 +1,31 @@
+{
+    "agent": "pr-agent",
+    "model": "haiku",
+    "max_turns": 10,
+    "filesystem": {
+        "read": ["memory/tickets/*"],
+        "write": ["memory/tickets/*/pr-result.md", "memory/tickets/*/pr-output.json", "memory/tickets/*/checkpoint.json", "memory/tickets/*/audit.md"]
+    },
+    "network": {
+        "allowed": ["gitlab.com"]
+    },
+    "jira": { "read": true, "write": true },
+    "git": { "read": true, "write": true },
+    "required_outputs": [
+        { "file": "pr-output.json", "schema": "pr" },
+        { "file": "pr-result.md", "schema": null }
+    ],
+    "credentials": [],
+    "exec": {
+        "allow_patterns": [
+            "git *",
+            "glab *",
+            "acli jira *",
+            "cd *",
+            "cat *",
+            "python3 *",
+            "mkdir *",
+            "./scripts/report-to-dashboard.sh *"
+        ]
+    }
+}

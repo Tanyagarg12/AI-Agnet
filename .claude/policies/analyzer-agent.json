@@ -1,0 +1,29 @@
+{
+    "agent": "analyzer-agent",
+    "model": "sonnet",
+    "max_turns": 25,
+    "filesystem": {
+        "read": ["tests/**", "actions/**", "selectors/**", "memory/discovery/**"],
+        "write": ["memory/discovery/scans/*/analyzer-output.json", "memory/discovery/scans/*/audit.md"]
+    },
+    "network": {
+        "allowed": ["gitlab.com"]
+    },
+    "jira": { "read": true, "write": false },
+    "git": { "read": true, "write": false },
+    "required_outputs": [
+        { "file": "analyzer-output.json", "schema": null }
+    ],
+    "credentials": [],
+    "exec": {
+        "allow_patterns": [
+            "glab *",
+            "./scripts/gitlab-retry.sh *",
+            "find *",
+            "cat *",
+            "python3 *",
+            "mkdir *",
+            "jq *"
+        ]
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "run_id": "GP-20260416-142117",
+    "status": "completed",
+    "framework": "playwright-typescript",
+    "branch": "test/KAN-4-orangehrm-navigation",
+    "commits": [
+        "b7c7803",
+        "e8ce07a",
+        "2d49a8c",
+        "fdf8736",
+        "e4f2c08",
+        "e6df4c3"
+    ],
+    "test_file": "tests/orangehrm-navigation.spec.ts",
+    "selector_file": "config/selectors/orangehrm.json",
+    "pom_files": [
+        "pages/BasePage.ts",
+        "pages/LoginPage.ts",
+        "pages/SidebarNav.ts",
+        "pages/DashboardPage.ts",
+        "pages/AdminPage.ts",
+        "pages/PimPage.ts",
+        "pages/LeavePage.ts",
+        "pages/TimePage.ts",
+        "pages/RecruitmentPage.ts",
+        "pages/MyInfoPage.ts",
+        "pages/PerformancePage.ts",
+        "pages/DirectoryPage.ts"
+    ],
+    "helper_files": [
+        "helpers/auth.ts",
+        "helpers/navigation.ts"
+    ],
+    "files_generated": [
+        "helpers/auth.ts",
+        "helpers/navigation.ts",
+        "pages/LoginPage.ts",
+        "pages/SidebarNav.ts",
+        "pages/DashboardPage.ts",
+        "pages/AdminPage.ts",
+        "pages/PimPage.ts",
+        "pages/LeavePage.ts",
+        "pages/TimePage.ts",
+        "pages/RecruitmentPage.ts",
+        "pages/MyInfoPage.ts",
+        "pages/PerformancePage.ts",
+        "pages/DirectoryPage.ts",
+        "tests/orangehrm-navigation.spec.ts"
+    ],
+    "test_count": 11,
+    "scenario_count": 11,
+    "new_selectors": 0,
+    "new_pom_methods": 15,
+    "feature_doc": "Tests login to OrangeHRM demo application and navigates to each of the 9 main sidebar modules (Admin, PIM, Leave, Time, Recruitment, My Info, Performance, Dashboard, Directory), verifying each page loads correctly by asserting the URL pattern and page heading. The My Info page is handled specially since it renders within the PIM module with heading 'PIM' and URL containing 'viewPersonalDetails'. Dashboard verification additionally confirms widget rendering."
+}

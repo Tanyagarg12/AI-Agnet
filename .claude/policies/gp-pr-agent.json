@@ -1,0 +1,44 @@
+{
+    "_extends": "gp-common.json",
+    "description": "GP PR Agent — creates pull/merge requests on GitHub, GitLab, or Azure Repos",
+    "filesystem": {
+        "read_allowed_extra": [
+            "memory/gp-runs/*/plan.json",
+            "memory/gp-runs/*/run-results.json",
+            "memory/gp-runs/*/codegen.json",
+            "memory/gp-runs/*/report.json",
+            "templates/gp/pr/**",
+            "config/vcs/**",
+            "config/platforms/**"
+        ],
+        "write_allowed_extra": [
+            "memory/gp-runs/*/pr-result.json",
+            "memory/gp-runs/*/checkpoint.json"
+        ]
+    },
+    "git": {
+        "allowed_extra": ["push -u origin *"],
+        "gate": "Only push after verifying tests are passing (run-results.json status = 'passed')"
+    },
+    "vcs": {
+        "allowed_operations": ["create_pr", "create_mr", "view_pr", "push_branch"],
+        "never": ["merge_pr", "close_pr", "delete_branch", "force_push"]
+    },
+    "exec": {
+        "allow_extra": [
+            "gh pr create *",
+            "gh pr view *",
+            "glab mr create *",
+            "glab mr view *",
+            "az repos pr create *",
+            "az repos pr show *",
+            "./scripts/gp-create-pr.sh *"
+        ]
+    },
+    "required_outputs": {
+        "pr-result.json": {
+            "required_fields": ["run_id", "vcs_provider", "pr_url", "branch"]
+        }
+    },
+    "max_turns": 12
+}

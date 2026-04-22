@@ -1,0 +1,14 @@
+{
+    "name": "qa-agent-dashboard",
+    "version": "1.0.0",
+    "description": "Dashboard UI for the Autonomous QA E2E Test Generation Platform",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js --dev"
+    },
+    "dependencies": {
+        "express": "^4.21.0",
+        "ws": "^8.18.0"
+    }
+}

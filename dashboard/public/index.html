@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Agent Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ── Header ────────────────────────────────────────────────────── -->
+    <header id="header">
+        <div class="header-left">
+            <h1>QA Agent Dashboard</h1>
+            <span class="header-subtitle">Autonomous E2E Test Generation</span>
+        </div>
+        <div class="header-right">
+            <div id="worker-status" class="status-badge status-offline">
+                <span class="status-dot"></span>
+                <span id="worker-text">No Workers</span>
+            </div>
+            <div id="system-stats">
+                <span id="stat-running" class="stat" title="Running">0 running</span>
+                <span id="stat-queued" class="stat" title="Queued">0 queued</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ── Main Content ──────────────────────────────────────────────── -->
+    <main>
+        <!-- Tab Navigation -->
+        <nav class="tabs">
+            <button class="tab active" data-tab="pipelines">Pipelines</button>
+            <button class="tab" data-tab="trigger">New Pipeline</button>
+            <button class="tab" data-tab="logs">Live Logs</button>
+            <button class="tab" data-tab="config">Configuration</button>
+        </nav>
+
+        <!-- ── Pipelines Tab ─────────────────────────────────────────── -->
+        <section id="tab-pipelines" class="tab-content active">
+            <div class="section-header">
+                <h2>Pipeline Runs</h2>
+                <button id="refresh-pipelines" class="btn btn-sm">Refresh</button>
+            </div>
+            <div id="pipeline-list" class="pipeline-grid">
+                <div class="empty-state">No pipelines yet. Trigger one from the "New Pipeline" tab.</div>
+            </div>
+        </section>
+
+        <!-- ── Trigger Tab ───────────────────────────────────────────── -->
+        <section id="tab-trigger" class="tab-content">
+            <h2>Trigger New Pipeline</h2>
+            <form id="trigger-form" class="form">
+                <div class="form-group">
+                    <label for="pipeline-type">Pipeline Type</label>
+                    <select id="pipeline-type">
+                        <option value="implementation">Implementation (Jira Ticket → E2E Test)</option>
+                        <option value="discovery">Discovery (Scan for Changes)</option>
+                        <option value="discovery-ticket">Discovery from Ticket</option>
+                        <option value="fix">Fix Failing Tests</option>
+                    </select>
+                </div>
+
+                <!-- Implementation fields -->
+                <div id="impl-fields" class="form-section">
+                    <div class="form-group">
+                        <label for="ticket-key">Ticket Key</label>
+                        <input type="text" id="ticket-key" placeholder="OXDEV-1234 or PROJ-123">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="target-env">Environment</label>
+                            <select id="target-env">
+                                <option value="stg">Staging</option>
+                                <option value="dev">Development</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="framework-select">Framework</label>
+                            <select id="framework-select">
+                                <option value="">Auto-detect</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="flag-auto" checked> Auto mode (no prompts)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="flag-watch"> Watch ticket for changes
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Discovery fields -->
+                <div id="discovery-fields" class="form-section hidden">
+                    <div class="form-group">
+                        <label>Services to Scan</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" value="frontend" checked> Frontend</label>
+                            <label class="checkbox-label"><input type="checkbox" value="connectors"> Connectors</label>
+                            <label class="checkbox-label"><input type="checkbox" value="settings-service"> Settings Service</label>
+                            <label class="checkbox-label"><input type="checkbox" value="report-service"> Report Service</label>
+                            <label class="checkbox-label"><input type="checkbox" value="gateway"> Gateway</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="since-date">Since</label>
+                            <input type="date" id="since-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="until-date">Until</label>
+                            <input type="date" id="until-date">
+                        </div>
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="flag-no-auto"> No-auto (create tickets only, don't run pipeline)
+                    </label>
+                </div>
+
+                <!-- Fix fields -->
+                <div id="fix-fields" class="form-section hidden">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fix-job">Job Name</label>
+                            <input type="text" id="fix-job" placeholder="e.g., settingsExclude">
+                        </div>
+                        <div class="form-group">
+                            <label for="fix-folder">Folder</label>
+                            <select id="fix-folder">
+                                <option value="Staging">Staging</option>
+                                <option value="Dev">Dev</option>
+                                <option value="Prod">Prod</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fix-category">Category</label>
+                        <select id="fix-category">
+                            <option value="automation_issue">Automation Issue</option>
+                            <option value="possible_real_issue">Possible Real Issue</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="trigger-btn">
+                    Start Pipeline
+                </button>
+            </form>
+        </section>
+
+        <!-- ── Logs Tab ──────────────────────────────────────────────── -->
+        <section id="tab-logs" class="tab-content">
+            <div class="section-header">
+                <h2>Live Logs</h2>
+                <div class="log-controls">
+                    <select id="log-pipeline-select">
+                        <option value="">Select a pipeline...</option>
+                    </select>
+                    <button id="clear-logs" class="btn btn-sm">Clear</button>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="auto-scroll" checked> Auto-scroll
+                    </label>
+                </div>
+            </div>
+            <div id="log-output" class="log-container">
+                <div class="empty-state">Select a pipeline to see its logs.</div>
+            </div>
+        </section>
+
+        <!-- ── Config Tab ────────────────────────────────────────────── -->
+        <section id="tab-config" class="tab-content">
+            <h2>System Configuration</h2>
+            <div class="config-grid">
+                <div class="config-card">
+                    <h3>Supported Frameworks</h3>
+                    <div id="config-frameworks" class="config-list">Loading...</div>
+                </div>
+                <div class="config-card">
+                    <h3>Ticket Platforms</h3>
+                    <div id="config-platforms" class="config-list">Loading...</div>
+                </div>
+                <div class="config-card">
+                    <h3>Workers</h3>
+                    <div id="config-workers" class="config-list">No workers connected.</div>
+                </div>
+                <div class="config-card">
+                    <h3>System Status</h3>
+                    <div id="config-status" class="config-list">Loading...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── Pipeline Detail Modal ─────────────────────────────────────── -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modal-title">Pipeline Details</h2>
+                <button id="modal-close" class="modal-close">&times;</button>
+            </div>
+            <div id="modal-body" class="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

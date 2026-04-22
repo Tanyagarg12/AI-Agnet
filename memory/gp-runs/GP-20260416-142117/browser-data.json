@@ -1,0 +1,651 @@
+{
+  "run_id": "GP-20260416-142117",
+  "status": "completed",
+  "env": "demo",
+  "base_url": "https://opensource-demo.orangehrmlive.com",
+  "tool_used": "playwright-headless",
+  "login_page": {
+    "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+    "selectors": {
+      "username": {
+        "css": "input[name='username']",
+        "xpath": "//input[@name='username']",
+        "data_testid": null,
+        "aria_label": null,
+        "placeholder": "Username",
+        "type": "text"
+      },
+      "password": {
+        "css": "input[name='password']",
+        "xpath": "//input[@name='password']",
+        "data_testid": null,
+        "aria_label": null,
+        "placeholder": "Password",
+        "type": "password"
+      },
+      "login_button": {
+        "css": "button[type='submit']",
+        "xpath": "//button[@type='submit']",
+        "data_testid": null,
+        "aria_label": null,
+        "text": "Login"
+      },
+      "login_form": {
+        "css": ".orangehrm-login-form",
+        "xpath": "//form[contains(@class,'orangehrm-login-form')]",
+        "data_testid": null
+      },
+      "login_container": {
+        "css": ".orangehrm-login-container",
+        "xpath": "//div[contains(@class,'orangehrm-login-container')]"
+      },
+      "login_branding": {
+        "css": ".orangehrm-login-branding",
+        "xpath": "//div[contains(@class,'orangehrm-login-branding')]"
+      }
+    }
+  },
+  "sidebar": {
+    "container": {
+      "css": ".oxd-sidepanel",
+      "xpath": "//aside[contains(@class,'oxd-sidepanel')]",
+      "class_names": ["oxd-sidepanel"]
+    },
+    "main_menu": {
+      "css": ".oxd-main-menu",
+      "xpath": "//nav[contains(@class,'oxd-main-menu')]"
+    },
+    "menu_item_link": {
+      "css": ".oxd-main-menu-item",
+      "xpath": "//a[contains(@class,'oxd-main-menu-item')]",
+      "note": "Each sidebar item is an anchor tag with class oxd-main-menu-item"
+    },
+    "menu_item_text_span": {
+      "css": ".oxd-main-menu-item--name",
+      "xpath": "//span[contains(@class,'oxd-main-menu-item--name')]",
+      "note": "Text label inside each sidebar menu item"
+    },
+    "nav_links": [
+      { "text": "Admin", "href": "/web/index.php/admin/viewAdminModule", "css": ".oxd-main-menu-item" },
+      { "text": "PIM", "href": "/web/index.php/pim/viewPimModule", "css": ".oxd-main-menu-item" },
+      { "text": "Leave", "href": "/web/index.php/leave/viewLeaveModule", "css": ".oxd-main-menu-item" },
+      { "text": "Time", "href": "/web/index.php/time/viewTimeModule", "css": ".oxd-main-menu-item" },
+      { "text": "Recruitment", "href": "/web/index.php/recruitment/viewRecruitmentModule", "css": ".oxd-main-menu-item" },
+      { "text": "My Info", "href": "/web/index.php/pim/viewMyDetails", "css": ".oxd-main-menu-item" },
+      { "text": "Performance", "href": "/web/index.php/performance/viewPerformanceModule", "css": ".oxd-main-menu-item" },
+      { "text": "Dashboard", "href": "/web/index.php/dashboard/index", "css": ".oxd-main-menu-item" },
+      { "text": "Directory", "href": "/web/index.php/directory/viewDirectory", "css": ".oxd-main-menu-item" },
+      { "text": "Maintenance", "href": "/web/index.php/maintenance/viewMaintenanceModule", "css": ".oxd-main-menu-item" },
+      { "text": "Claim", "href": "/web/index.php/claim/viewClaimModule", "css": ".oxd-main-menu-item" },
+      { "text": "Buzz", "href": "/web/index.php/buzz/viewBuzz", "css": ".oxd-main-menu-item" }
+    ]
+  },
+  "pages": {
+    "Admin": {
+      "menu_item": "Admin",
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers",
+      "url_pattern": "/web/index.php/admin/",
+      "selectors": {
+        "heading": {
+          "css": "h6",
+          "xpath": "//h6[normalize-space(text())='Admin']",
+          "text": "Admin",
+          "note": "First h6 on page; confirmed via live exploration"
+        },
+        "breadcrumb": {
+          "css": ".oxd-topbar-header-breadcrumb",
+          "text": "AdminUser Management"
+        },
+        "main_content": {
+          "css": ".oxd-layout-context",
+          "xpath": "//div[contains(@class,'oxd-layout-context')]"
+        },
+        "data_table": {
+          "css": ".oxd-table",
+          "xpath": "//div[contains(@class,'oxd-table')]",
+          "visible": true
+        }
+      },
+      "screenshot": "screenshots/admin.png"
+    },
+    "PIM": {
+      "menu_item": "PIM",
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList",
+      "url_pattern": "/web/index.php/pim/",
+      "selectors": {
+        "heading": {
+          "css": "h6",
+          "xpath": "//h6[normalize-space(text())='PIM']",
+          "text": "PIM"
+        },
+        "breadcrumb": {
+          "css": ".oxd-topbar-header-breadcrumb",
+          "text": "PIM"
+        },
+        "main_content": {
+          "css": ".oxd-layout-context"
+        },
+        "data_table": {
+          "css": ".oxd-table",
+          "visible": true
+        }
+      },
+      "screenshot": "screenshots/pim.png"
+    },
+    "Leave": {
+      "menu_item": "Leave",
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList",
+      "url_pattern": "/web/index.php/leave/",
+      "selectors": {
+        "heading": {
+          "css": "h6",
+          "xpath": "//h6[normalize-space(text())='Leave']",
+          "text": "Leave"
+        },
+        "breadcrumb": {
+          "css": ".oxd-topbar-header-breadcrumb",
+          "text": "Leave"
+        },
+        "main_content": {
+          "css": ".oxd-layout-context"
+        },
+        "data_table": {
+          "css": ".oxd-table",
+          "visible": true
+        }
+      },
+      "screenshot": "screenshots/leave.png"
+    },
+    "Time": {
+      "menu_item": "Time",
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet",
+      "url_pattern": "/web/index.php/time/",
+      "selectors": {
+        "heading": {
+          "css": "h6",
+          "xpath": "//h6[normalize-space(text())='Time']",
+          "text": "Time",
+          "note": "Multiple h6 elements present; Time is the breadcrumb-level heading"
+        },
+        "breadcrumb": {
+          "css": ".oxd-topbar-header-breadcrumb",
+          "text": "TimeTimesheets"
+        },
+        "main_content": {
+          "css": ".oxd-layout-context"
+        },
+        "data_table": {
+          "css": ".oxd-table",
+          "visible": true
+        }
+      },
+      "screenshot": "screenshots/time.png"
+    },
+    "Recruitment": {
+      "menu_item": "Recruitment",
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates",
+      "url_pattern": "/web/index.php/recruitment/",
+      "selectors": {
+        "heading": {
+          "css": "h6",
+          "xpath": "//h6[normalize-space(text())='Recruitment']",
+          "text": "Recruitment"
+        },
+        "breadcrumb": {
+          "css": ".oxd-topbar-header-breadcrumb",
+          "text": "Recruitment"
+        },
+        "main_content": {
+          "css": ".oxd-layout-context"
+        },
+        "data_table": {
+          "css": ".oxd-table",
+          "visible": true
+        }
+      },
+      "screenshot": "screenshots/recruitment.png"
+    },
+    "My Info": {
+      "menu_item": "My Info",
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7",
+      "url_pattern": "/web/index.php/pim/viewPersonalDetails",
+      "selectors": {
+        "heading": {
+          "css": "h6",
+          "xpath": "//h6[normalize-space(text())='PIM']",
+          "text": "PIM",
+          "note": "My Info redirects under PIM module; breadcrumb shows 'PIM'. Employee name appears in a second h6."
+        },
+        "employee_name_heading": {
+          "css": ".orangehrm-edit-employee-name h6",
+          "xpath": "//div[contains(@class,'orangehrm-edit-employee')]//h6",
+          "note": "Employee name shown in profile h6 - dynamic, varies by user"
+        },
+        "breadcrumb": {
+          "css": ".oxd-topbar-header-breadcrumb",
+          "text": "PIM"
+        },
+        "main_content": {
+          "css": ".oxd-layout-context"
+        }
+      },
+      "screenshot": "screenshots/my-info.png"
+    },
+    "Performance": {
+      "menu_item": "Performance",
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview",
+      "url_pattern": "/web/index.php/performance/",
+      "selectors": {
+        "heading": {
+          "css": "h6",
+          "xpath": "//h6[normalize-space(text())='Performance']",
+          "text": "Performance"
+        },
+        "breadcrumb": {
+          "css": ".oxd-topbar-header-breadcrumb",
+          "text": "PerformanceManage Reviews"
+        },
+        "main_content": {
+          "css": ".oxd-layout-context"
+        },
+        "data_table": {
+          "css": ".oxd-table",
+          "visible": true
+        }
+      },
+      "screenshot": "screenshots/performance.png"
+    },
+    "Dashboard": {
+      "menu_item": "Dashboard",
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
+      "url_pattern": "/web/index.php/dashboard/",
+      "selectors": {
+        "heading": {
+          "css": "h6",
+          "xpath": "//h6[normalize-space(text())='Dashboard']",
+          "text": "Dashboard"
+        },
+        "breadcrumb": {
+          "css": ".oxd-topbar-header-breadcrumb",
+          "text": "Dashboard"
+        },
+        "main_content": {
+          "css": ".oxd-layout-context"
+        },
+        "widgets": {
+          "css": ".orangehrm-dashboard-widget",
+          "count": 14,
+          "note": "14 dashboard widgets confirmed"
+        }
+      },
+      "screenshot": "screenshots/dashboard.png"
+    },
+    "Directory": {
+      "menu_item": "Directory",
+      "url": "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory",
+      "url_pattern": "/web/index.php/directory/",
+      "selectors": {
+        "heading": {
+          "css": "h6",
+          "xpath": "//h6[normalize-space(text())='Directory']",
+          "text": "Directory"
+        },
+        "breadcrumb": {
+          "css": ".oxd-topbar-header-breadcrumb",
+          "text": "Directory"
+        },
+        "main_content": {
+          "css": ".oxd-layout-context"
+        }
+      },
+      "screenshot": "screenshots/directory.png"
+    }
+  },
+  "selectors": {
+    "usernameInput": {
+      "css": "input[name='username']",
+      "xpath": "//input[@name='username']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "Username",
+      "page": "/web/index.php/auth/login",
+      "reuse_from": null
+    },
+    "passwordInput": {
+      "css": "input[name='password']",
+      "xpath": "//input[@name='password']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "Password",
+      "page": "/web/index.php/auth/login",
+      "reuse_from": null
+    },
+    "loginButton": {
+      "css": "button[type='submit']",
+      "xpath": "//button[@type='submit']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "Login",
+      "page": "/web/index.php/auth/login",
+      "reuse_from": null
+    },
+    "loginForm": {
+      "css": ".orangehrm-login-form",
+      "xpath": "//form[contains(@class,'orangehrm-login-form')]",
+      "data_testid": null,
+      "aria_label": null,
+      "text": null,
+      "page": "/web/index.php/auth/login",
+      "reuse_from": null
+    },
+    "loginContainer": {
+      "css": ".orangehrm-login-container",
+      "xpath": "//div[contains(@class,'orangehrm-login-container')]",
+      "data_testid": null,
+      "aria_label": null,
+      "text": null,
+      "page": "/web/index.php/auth/login",
+      "reuse_from": null
+    },
+    "sidebarContainer": {
+      "css": ".oxd-sidepanel",
+      "xpath": "//aside[contains(@class,'oxd-sidepanel')]",
+      "data_testid": null,
+      "aria_label": null,
+      "text": null,
+      "page": "all",
+      "reuse_from": null
+    },
+    "sidebarMainMenu": {
+      "css": ".oxd-main-menu",
+      "xpath": "//nav[contains(@class,'oxd-main-menu')]",
+      "data_testid": null,
+      "aria_label": null,
+      "text": null,
+      "page": "all",
+      "reuse_from": null
+    },
+    "menuItemLink": {
+      "css": ".oxd-main-menu-item",
+      "xpath": "//a[contains(@class,'oxd-main-menu-item')]",
+      "data_testid": null,
+      "aria_label": null,
+      "text": null,
+      "page": "all",
+      "reuse_from": null,
+      "note": "Generic selector for any sidebar nav link"
+    },
+    "menuItemAdmin": {
+      "css": ".oxd-main-menu-item--name",
+      "xpath": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Admin']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "Admin",
+      "page": "all",
+      "reuse_from": null
+    },
+    "menuItemPIM": {
+      "css": ".oxd-main-menu-item--name",
+      "xpath": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='PIM']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "PIM",
+      "page": "all",
+      "reuse_from": null
+    },
+    "menuItemLeave": {
+      "css": ".oxd-main-menu-item--name",
+      "xpath": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Leave']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "Leave",
+      "page": "all",
+      "reuse_from": null
+    },
+    "menuItemTime": {
+      "css": ".oxd-main-menu-item--name",
+      "xpath": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Time']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "Time",
+      "page": "all",
+      "reuse_from": null
+    },
+    "menuItemRecruitment": {
+      "css": ".oxd-main-menu-item--name",
+      "xpath": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Recruitment']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "Recruitment",
+      "page": "all",
+      "reuse_from": null
+    },
+    "menuItemMyInfo": {
+      "css": ".oxd-main-menu-item--name",
+      "xpath": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='My Info']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "My Info",
+      "page": "all",
+      "reuse_from": null
+    },
+    "menuItemPerformance": {
+      "css": ".oxd-main-menu-item--name",
+      "xpath": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Performance']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "Performance",
+      "page": "all",
+      "reuse_from": null
+    },
+    "menuItemDashboard": {
+      "css": ".oxd-main-menu-item--name",
+      "xpath": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Dashboard']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "Dashboard",
+      "page": "all",
+      "reuse_from": null
+    },
+    "menuItemDirectory": {
+      "css": ".oxd-main-menu-item--name",
+      "xpath": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Directory']",
+      "data_testid": null,
+      "aria_label": null,
+      "text": "Directory",
+      "page": "all",
+      "reuse_from": null
+    },
+    "pageHeading": {
+      "css": "h6",
+      "xpath": "//h6",
+      "data_testid": null,
+      "aria_label": null,
+      "text": null,
+      "page": "all",
+      "reuse_from": null,
+      "note": "Generic page heading selector — filter by text content per page"
+    },
+    "breadcrumb": {
+      "css": ".oxd-topbar-header-breadcrumb",
+      "xpath": "//nav[contains(@class,'oxd-topbar-header-breadcrumb')]",
+      "data_testid": null,
+      "aria_label": null,
+      "text": null,
+      "page": "all",
+      "reuse_from": null
+    },
+    "mainContent": {
+      "css": ".oxd-layout-context",
+      "xpath": "//div[contains(@class,'oxd-layout-context')]",
+      "data_testid": null,
+      "aria_label": null,
+      "text": null,
+      "page": "all",
+      "reuse_from": null
+    },
+    "dataTable": {
+      "css": ".oxd-table",
+      "xpath": "//div[contains(@class,'oxd-table')]",
+      "data_testid": null,
+      "aria_label": null,
+      "text": null,
+      "page": "all",
+      "reuse_from": null
+    },
+    "dashboardWidget": {
+      "css": ".orangehrm-dashboard-widget",
+      "xpath": "//div[contains(@class,'orangehrm-dashboard-widget')]",
+      "data_testid": null,
+      "aria_label": null,
+      "text": null,
+      "page": "/web/index.php/dashboard/index",
+      "reuse_from": null
+    }
+  },
+  "navigation_flow": [
+    {
+      "step": 1,
+      "action": "navigate",
+      "url": "/web/index.php/auth/login",
+      "description": "Open login page",
+      "screenshot": "screenshots/login.png"
+    },
+    {
+      "step": 2,
+      "action": "fill",
+      "target": "input[name='username']",
+      "value": "Admin"
+    },
+    {
+      "step": 3,
+      "action": "fill",
+      "target": "input[name='password']",
+      "value": "(credentials from env)"
+    },
+    {
+      "step": 4,
+      "action": "click",
+      "target": "button[type='submit']",
+      "expected_url": "/web/index.php/dashboard/index",
+      "screenshot": "screenshots/dashboard-sidebar.png"
+    },
+    {
+      "step": 5,
+      "action": "navigate_menu",
+      "menu_item": "Admin",
+      "click_target": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Admin']",
+      "expected_url": "/web/index.php/admin/",
+      "expected_heading": "Admin",
+      "screenshot": "screenshots/admin.png"
+    },
+    {
+      "step": 6,
+      "action": "navigate_menu",
+      "menu_item": "PIM",
+      "click_target": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='PIM']",
+      "expected_url": "/web/index.php/pim/",
+      "expected_heading": "PIM",
+      "screenshot": "screenshots/pim.png"
+    },
+    {
+      "step": 7,
+      "action": "navigate_menu",
+      "menu_item": "Leave",
+      "click_target": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Leave']",
+      "expected_url": "/web/index.php/leave/",
+      "expected_heading": "Leave",
+      "screenshot": "screenshots/leave.png"
+    },
+    {
+      "step": 8,
+      "action": "navigate_menu",
+      "menu_item": "Time",
+      "click_target": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Time']",
+      "expected_url": "/web/index.php/time/",
+      "expected_heading": "Time",
+      "screenshot": "screenshots/time.png"
+    },
+    {
+      "step": 9,
+      "action": "navigate_menu",
+      "menu_item": "Recruitment",
+      "click_target": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Recruitment']",
+      "expected_url": "/web/index.php/recruitment/",
+      "expected_heading": "Recruitment",
+      "screenshot": "screenshots/recruitment.png"
+    },
+    {
+      "step": 10,
+      "action": "navigate_menu",
+      "menu_item": "My Info",
+      "click_target": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='My Info']",
+      "expected_url": "/web/index.php/pim/viewPersonalDetails",
+      "expected_heading": "PIM",
+      "screenshot": "screenshots/my-info.png"
+    },
+    {
+      "step": 11,
+      "action": "navigate_menu",
+      "menu_item": "Performance",
+      "click_target": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Performance']",
+      "expected_url": "/web/index.php/performance/",
+      "expected_heading": "Performance",
+      "screenshot": "screenshots/performance.png"
+    },
+    {
+      "step": 12,
+      "action": "navigate_menu",
+      "menu_item": "Dashboard",
+      "click_target": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Dashboard']",
+      "expected_url": "/web/index.php/dashboard/",
+      "expected_heading": "Dashboard",
+      "screenshot": "screenshots/dashboard.png"
+    },
+    {
+      "step": 13,
+      "action": "navigate_menu",
+      "menu_item": "Directory",
+      "click_target": "//span[contains(@class,'oxd-main-menu-item--name') and normalize-space(text())='Directory']",
+      "expected_url": "/web/index.php/directory/",
+      "expected_heading": "Directory",
+      "screenshot": "screenshots/directory.png"
+    }
+  ],
+  "api_endpoints": [],
+  "captured_values": {
+    "post_login_url": "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
+    "post_login_path": "/web/index.php/dashboard/index",
+    "login_credentials": {
+      "username": "Admin",
+      "password": "admin123 (demo site only)"
+    },
+    "page_headings_confirmed": {
+      "Admin": "Admin",
+      "PIM": "PIM",
+      "Leave": "Leave",
+      "Time": "Time",
+      "Recruitment": "Recruitment",
+      "My Info": "PIM (module breadcrumb; employee name in secondary h6)",
+      "Performance": "Performance",
+      "Dashboard": "Dashboard",
+      "Directory": "Directory"
+    },
+    "sidebar_class_system": "oxd-sidepanel > oxd-main-menu > oxd-main-menu-item (anchor) > oxd-main-menu-item--name (span)",
+    "no_data_testid_attributes": true,
+    "framework_notes": "OrangeHRM uses Vue.js with custom OXD design system. No data-testid attributes present. Use name attributes for inputs and class-based selectors for navigation."
+  },
+  "screenshots": [
+    "screenshots/login.png",
+    "screenshots/dashboard-sidebar.png",
+    "screenshots/admin.png",
+    "screenshots/pim.png",
+    "screenshots/leave.png",
+    "screenshots/time.png",
+    "screenshots/recruitment.png",
+    "screenshots/my-info.png",
+    "screenshots/performance.png",
+    "screenshots/dashboard.png",
+    "screenshots/directory.png"
+  ]
+}

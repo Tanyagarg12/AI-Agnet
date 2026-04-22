@@ -1,0 +1,33 @@
+{
+    "_extends": "gp-common.json",
+    "description": "GP Runner Agent — executes tests and parses results",
+    "filesystem": {
+        "read_allowed_extra": [
+            "memory/gp-runs/*/codegen.json",
+            "memory/gp-runs/*/plan.json"
+        ],
+        "write_allowed_extra": [
+            "memory/gp-runs/*/run-results.json",
+            "memory/gp-runs/*/run-log.txt",
+            "memory/gp-runs/*/checkpoint.json"
+        ]
+    },
+    "exec": {
+        "allow_extra": [
+            "./scripts/gp-run-tests.sh *",
+            "./scripts/gp-parse-results.sh *",
+            "envFile=* npx playwright test *",
+            "npx playwright test *",
+            "pytest *",
+            "mvn test *",
+            "npx cypress run *",
+            "robot *"
+        ]
+    },
+    "required_outputs": {
+        "run-results.json": {
+            "required_fields": ["run_id", "status", "total", "passed", "failed"]
+        }
+    },
+    "max_turns": 15
+}

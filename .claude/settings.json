@@ -1,0 +1,183 @@
+{
+    "env": {
+        "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    },
+    "permissions": {
+        "allow": [
+            "Bash(acli *)",
+            "Bash(glab *)",
+            "mcp__memory__*",
+            "Bash(playwright-cli *)",
+            "Bash(playwright-cli open:*)",
+            "Bash(playwright-cli goto:*)",
+            "Bash(playwright-cli click:*)",
+            "Bash(playwright-cli fill:*)",
+            "Bash(playwright-cli type:*)",
+            "Bash(playwright-cli press:*)",
+            "Bash(playwright-cli hover:*)",
+            "Bash(playwright-cli select:*)",
+            "Bash(playwright-cli screenshot:*)",
+            "Bash(playwright-cli snapshot:*)",
+            "Bash(playwright-cli console:*)",
+            "Bash(playwright-cli network:*)",
+            "Bash(playwright-cli tab-list:*)",
+            "Bash(playwright-cli tab-new:*)",
+            "Bash(npx playwright-cli *)",
+            "Bash(node .claude/skills/chrome-cdp/scripts/cdp.mjs *)",
+            "Bash(./scripts/gitlab-retry.sh *)",
+            "Bash(git *)",
+            "Bash(jq *)",
+            "Bash(ls *)",
+            "Bash(find *)",
+            "Bash(wc *)",
+            "Bash(envFile=* npx playwright test*)",
+            "Bash(npx playwright test*)",
+            "Bash(mkdir *)",
+            "Bash(cd *)",
+            "Bash(./scripts/report-to-dashboard.sh *)",
+            "Bash(cat *)",
+            "Bash(python3 *)",
+            "Bash(npm *)",
+            "Bash(npx *)",
+            "Bash(curl *)",
+            "Bash(ps *)",
+            "Bash(unzip *)",
+            "Bash(echo *)",
+            "Bash(date *)",
+            "Bash(head *)",
+            "Bash(tail *)",
+            "Bash(grep *)",
+            "Bash(sed *)",
+            "Bash(awk *)",
+            "Bash(sort *)",
+            "Bash(chmod *)",
+            "Bash(cp *)",
+            "Bash(mv *)",
+            "Bash(rm *)",
+            "Bash(touch *)",
+            "Bash(kill *)",
+            "Bash(sleep *)",
+            "Bash(node *)",
+            "Bash(./scripts/*)",
+            "Bash(./scripts/report-stage.sh *)",
+            "Bash(INBOX_FILE=*)",
+            "Bash(TIMESTAMP=*)",
+            "Bash(VIDEO_URL=*)",
+            "Bash(RELAY_PID=*)",
+            "Bash(DASHBOARD_WS_URL=*)",
+            "Bash(SESSION=*)",
+            "Bash(BRANCH=*)",
+            "Bash(FILES=*)",
+            "Bash(COMMITS=*)",
+            "Bash(RESPONSE=*)",
+            "Bash(CMD_TYPE=*)",
+            "Bash(CMD_ID=*)",
+            "Bash(REASON=*)",
+            "Bash(REMOTE=*)",
+            "Bash(REMOTE_CMD=*)",
+            "Read",
+            "Write(memory/tickets/**)",
+            "Edit(memory/tickets/**)",
+            "Write(memory/agents/**)",
+            "Edit(memory/agents/**)",
+            "Write(memory/discovery/**)",
+            "Edit(memory/discovery/**)",
+            "Write(memory/gp/**)",
+            "Edit(memory/gp/**)",
+            "Write(memory/gp-runs/**)",
+            "Edit(memory/gp-runs/**)",
+            "Bash(gh *)",
+            "Bash(az *)",
+            "Bash(mvn *)",
+            "Bash(pip *)",
+            "Bash(pytest *)",
+            "Bash(robot *)",
+            "Bash(allure *)",
+            "Bash(appium *)",
+            "Bash(timeout *)",
+            "Bash(./scripts/gp-*.sh *)",
+            "Bash(./scripts/gp-*.py *)",
+            "Bash(GP_TEST_PROJECT_PATH=*)",
+            "Bash(GP_PR_TARGET_BRANCH=*)",
+            "Bash(FRAMEWORK=*)",
+            "Bash(VCS=*)",
+            "Bash(RUN_ID=*)",
+            "Bash(MEMORY_DIR=*)",
+            "Bash(EXIT_CODE=*)",
+            "Bash(PLATFORM=*)"
+        ],
+        "deny": []
+    },
+    "hooks": {
+        "PreToolUse": [
+            {
+                "matcher": "Bash",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/validate-jira-safety.sh",
+                        "timeout": 5000
+                    },
+                    {
+                        "type": "command",
+                        "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/validate-git-branch.sh",
+                        "timeout": 5000
+                    },
+                    {
+                        "type": "command",
+                        "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/validate-framework-safety.sh",
+                        "timeout": 5000
+                    },
+                    {
+                        "type": "command",
+                        "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/validate-no-credential-leak.sh",
+                        "timeout": 5000
+                    },
+                    {
+                        "type": "command",
+                        "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/validate-exec-allowlist.sh",
+                        "timeout": 5000
+                    },
+                    {
+                        "type": "command",
+                        "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/validate-loop-detection.sh",
+                        "timeout": 5000
+                    }
+                ]
+            }
+        ],
+        "TaskCompleted": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/validate-task-completed.sh",
+                        "timeout": 10000
+                    }
+                ]
+            }
+        ],
+        "TeammateIdle": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/validate-teammate-idle.sh",
+                        "timeout": 10000
+                    }
+                ]
+            }
+        ],
+        "PermissionRequest": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/handle-permission.sh",
+                        "timeout": 120000
+                    }
+                ]
+            }
+        ]
+    }
+}

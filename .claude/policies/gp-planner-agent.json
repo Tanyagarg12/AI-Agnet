@@ -1,0 +1,29 @@
+{
+    "_extends": "gp-common.json",
+    "description": "GP Planner Agent — analyzes requirements and selects framework",
+    "filesystem": {
+        "read_allowed_extra": [
+            "memory/gp-runs/*/intake.json",
+            "memory/gp/platform-patterns.md",
+            "memory/gp/framework-patterns.md",
+            "config/gp-defaults.json"
+        ],
+        "write_allowed_extra": [
+            "memory/gp-runs/*/plan.json",
+            "memory/gp-runs/*/checkpoint.json",
+            "memory/gp-runs/*/audit.md"
+        ]
+    },
+    "exec": {
+        "allow_extra": [
+            "./scripts/gp-detect-framework.sh *",
+            "./scripts/gp-detect-platform.sh *"
+        ]
+    },
+    "required_outputs": {
+        "plan.json": {
+            "required_fields": ["run_id", "framework", "language", "scenarios", "pom_pages_needed", "branch_name"]
+        }
+    },
+    "max_turns": 25
+}

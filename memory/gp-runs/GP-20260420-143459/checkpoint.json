@@ -1,0 +1,15 @@
+{
+    "run_id": "GP-20260420-143459",
+    "ticket_input": "KAN-4",
+    "pipeline": ["intake", "plan", "scaffold", "browse", "codegen", "run", "report", "debug", "pr", "learn"],
+    "completed_stages": ["intake", "plan", "scaffold", "browse", "codegen"],
+    "current_stage": "run",
+    "status": "in_progress",
+    "flags": {
+        "auto": true,
+        "framework": "playwright-js",
+        "env": "stg",
+        "no_browse": false
+    },
+    "last_updated": "2026-04-20T14:35:00Z"
+}

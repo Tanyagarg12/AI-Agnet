@@ -1,0 +1,17 @@
+{
+    "run_id": "GP-20260416-065624",
+    "ticket_input": "KAN-4",
+    "pipeline": ["intake", "plan", "scaffold", "browse", "codegen", "run", "report", "debug", "pr", "learn"],
+    "completed_stages": [],
+    "current_stage": "intake",
+    "status": "in_progress",
+    "flags": {
+        "auto": true,
+        "platform": "jira-any",
+        "framework": null,
+        "vcs": "github",
+        "no_browse": false,
+        "no_pr": false
+    },
+    "last_updated": "2026-04-16T06:56:24Z"
+}

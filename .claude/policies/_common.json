@@ -1,0 +1,42 @@
+{
+    "description": "Common policy rules shared by all agents. Agent-specific policies override these values via deep merge.",
+    "filesystem": {
+        "never_modify": [
+            "utils/setHooks.js",
+            "utils/setHooksAPI.js",
+            "playwright.config.js",
+            "params/global.json",
+            "utils/generateAccessToken.js"
+        ]
+    },
+    "git": {
+        "protected_branches": ["developmentV2", "development", "main", "master", "release/*"],
+        "never": ["force_push", "delete_remote_branch", "merge"],
+        "mr_target": "developmentV2"
+    },
+    "jira": {
+        "project_scope": "OXDEV",
+        "never": ["delete_ticket", "change_type", "reassign", "change_summary", "change_description", "change_priority"]
+    },
+    "banned_patterns": [
+        "page.waitForLoadState(\"networkidle\")",
+        "node -e.*require.*playwright"
+    ],
+    "exec": {
+        "deny_patterns": [
+            "rm -rf /*",
+            "rm -rf .",
+            "curl * | sh",
+            "curl * | bash",
+            "wget * | sh",
+            "eval *",
+            "source .env*"
+        ],
+        "safe_bins": ["jq", "python3", "wc", "date", "head", "tail", "cat", "grep", "find", "ls", "mkdir"],
+        "loop_detection": {
+            "history_size": 30,
+            "repeat_threshold": 6,
+            "pingpong_threshold": 8
+        }
+    }
+}

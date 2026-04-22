@@ -1,0 +1,31 @@
+{
+    "agent": "explorer-agent",
+    "model": "sonnet",
+    "max_turns": 25,
+    "filesystem": {
+        "read": ["tests/**", "actions/**", "selectors/**", "utils/**", "memory/tickets/*"],
+        "write": ["memory/tickets/*/exploration.md", "memory/tickets/*/explorer-output.json", "memory/tickets/*/checkpoint.json", "memory/tickets/*/audit.md"]
+    },
+    "network": {
+        "allowed": []
+    },
+    "jira": { "read": true, "write": false },
+    "git": { "read": true, "write": false },
+    "required_outputs": [
+        { "file": "exploration.md", "schema": null },
+        { "file": "explorer-output.json", "schema": "explorer" }
+    ],
+    "credentials": [],
+    "exec": {
+        "allow_patterns": [
+            "find *",
+            "ls *",
+            "cat *",
+            "head *",
+            "wc *",
+            "python3 *",
+            "mkdir *",
+            "./scripts/report-to-dashboard.sh *"
+        ]
+    }
+}

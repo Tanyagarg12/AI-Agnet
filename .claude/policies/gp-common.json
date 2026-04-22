@@ -1,0 +1,152 @@
+{
+    "_comment": "Base policy for all gp-* agents. Deep-merged with _common.json by load-policy.py. GP-specific rules take precedence.",
+    "description": "General-Purpose Test Agent — base policy for all GP pipeline agents",
+
+    "filesystem": {
+        "never_modify": [
+            "config/platforms/*.json",
+            "config/frameworks/*.json",
+            "config/vcs/*.json",
+            "config/gp-defaults.json",
+            ".claude/policies/_common.json",
+            ".claude/policies/gp-common.json",
+            "scripts/validate-*.sh",
+            "scripts/validate-*.py",
+            "CLAUDE.md"
+        ],
+        "read_allowed": [
+            "config/**",
+            "templates/gp/**",
+            "memory/gp/**",
+            "memory/gp-runs/**",
+            ".claude/agents/gp-*.md",
+            ".claude/policies/gp-*.json",
+            "scripts/gp-*.sh",
+            "scripts/gp-*.py"
+        ],
+        "write_allowed": [
+            "memory/gp-runs/**",
+            "memory/gp/platform-patterns.md",
+            "memory/gp/framework-patterns.md",
+            "memory/gp/failure-catalog.md",
+            "memory/gp/vcs-patterns.md",
+            "memory/gp/run-history.md"
+        ]
+    },
+
+    "git": {
+        "protected_branches": [
+            "main",
+            "master",
+            "develop",
+            "developmentV2",
+            "release/*",
+            "hotfix/*"
+        ],
+        "allowed_operations": [
+            "checkout -b",
+            "add",
+            "commit",
+            "push -u origin"
+        ],
+        "never": [
+            "force_push",
+            "push --force",
+            "push -f",
+            "delete_remote_branch",
+            "branch -D",
+            "reset --hard",
+            "merge",
+            "rebase"
+        ]
+    },
+
+    "jira": {
+        "allowed_projects": "ALL",
+        "_note": "GP agents use curl directly (not acli), so OXDEV restrictions don't apply"
+    },
+
+    "network": {
+        "allowed_outbound": [
+            "*.atlassian.net",
+            "api.github.com",
+            "github.com",
+            "dev.azure.com",
+            "api.linear.app",
+            "*.service-now.com",
+            "gitlab.com",
+            "*.gitlab.com",
+            "registry.npmjs.org",
+            "pypi.org",
+            "files.pythonhosted.org",
+            "repo.maven.apache.org"
+        ],
+        "never_exfiltrate": [
+            "credentials",
+            "api_tokens",
+            "passwords",
+            "private_keys"
+        ]
+    },
+
+    "exec": {
+        "allow_patterns": [
+            "npm *",
+            "npx *",
+            "pip *",
+            "python3 *",
+            "pytest *",
+            "mvn *",
+            "gradle *",
+            "git *",
+            "gh *",
+            "glab *",
+            "az *",
+            "curl *",
+            "jq *",
+            "cat *",
+            "ls *",
+            "mkdir *",
+            "find *",
+            "grep *",
+            "sed *",
+            "echo *",
+            "node *",
+            "playwright-cli *",
+            "npx playwright *",
+            "allure *",
+            "appium *",
+            "robot *",
+            "./scripts/gp-*.sh *",
+            "./scripts/gp-*.py *"
+        ],
+        "deny_patterns": [
+            "rm -rf /*",
+            "rm -rf .",
+            "rm -rf /",
+            "curl * | sh",
+            "curl * | bash",
+            "wget * | sh",
+            "eval *",
+            "source .env*",
+            ". .env*",
+            "DROP TABLE",
+            "DELETE FROM",
+            "chmod 777 *",
+            "sudo *"
+        ]
+    },
+
+    "credential_rules": {
+        "never_log_to_stdout": ["passwords", "tokens", "api_keys", "secrets"],
+        "always_use_env_vars": true,
+        "never_hardcode_in_generated_code": true,
+        "mask_in_screenshots": ["password", "token", "secret", "api_key"]
+    },
+
+    "output_requirements": {
+        "skeleton_first": "Write a skeleton output file BEFORE doing complex work",
+        "update_checkpoint": "Update checkpoint.json after every stage completion",
+        "audit_log": "Append key operations to audit.md in MEMORY_DIR"
+    }
+}

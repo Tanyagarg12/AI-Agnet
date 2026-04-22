@@ -1,0 +1,33 @@
+{
+    "agent": "code-writer-agent",
+    "model": "opus",
+    "max_turns": 50,
+    "filesystem": {
+        "read": ["tests/**", "actions/**", "selectors/**", "utils/**", "memory/tickets/*", "templates/**"],
+        "write": ["tests/**", "actions/**", "selectors/**", "memory/tickets/*/implementation.md", "memory/tickets/*/code-writer-output.json", "memory/tickets/*/checkpoint.json", "memory/tickets/*/audit.md"]
+    },
+    "network": {
+        "allowed": []
+    },
+    "jira": { "read": true, "write": false },
+    "git": { "read": true, "write": true },
+    "required_outputs": [
+        { "file": "code-writer-output.json", "schema": "code-writer" },
+        { "file": "implementation.md", "schema": null }
+    ],
+    "credentials": [],
+    "exec": {
+        "allow_patterns": [
+            "git *",
+            "cd *",
+            "find *",
+            "ls *",
+            "cat *",
+            "head *",
+            "wc *",
+            "python3 *",
+            "mkdir *",
+            "./scripts/report-to-dashboard.sh *"
+        ]
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "agent": "ticket-creator-agent",
+    "model": "opus",
+    "max_turns": 15,
+    "filesystem": {
+        "read": ["memory/discovery/**"],
+        "write": ["memory/discovery/scans/*/tickets-created.json", "memory/discovery/scans/*/audit.md"]
+    },
+    "network": {
+        "allowed": []
+    },
+    "jira": { "read": true, "write": true },
+    "git": { "read": false, "write": false },
+    "required_outputs": [
+        { "file": "tickets-created.json", "schema": null }
+    ],
+    "credentials": [],
+    "exec": {
+        "allow_patterns": [
+            "acli jira *",
+            "python3 *",
+            "cat *",
+            "mkdir *",
+            "jq *"
+        ]
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "run_id": "GP-20260416-142117",
+    "status": "completed",
+    "branch_name": "test/KAN-4-orangehrm-navigation",
+    "project_root": "C:/Users/DELL/Desktop/aiAgnet/AI-Agnet",
+    "framework": "playwright-typescript",
+    "directories_created": ["tests/", "pages/", "helpers/", "config/selectors/"],
+    "files_created": [
+        "playwright.config.ts",
+        "tsconfig.json",
+        "package.json",
+        "config/selectors/orangehrm.json",
+        "pages/BasePage.ts",
+        "pages/LoginPage.ts",
+        "pages/DashboardPage.ts",
+        "pages/SidebarNav.ts",
+        "pages/AdminPage.ts",
+        "pages/PimPage.ts",
+        "pages/LeavePage.ts",
+        "pages/TimePage.ts",
+        "pages/RecruitmentPage.ts",
+        "pages/MyInfoPage.ts",
+        "pages/PerformancePage.ts",
+        "pages/DirectoryPage.ts",
+        "helpers/auth.ts",
+        "helpers/navigation.ts"
+    ],
+    "dependencies_installed": ["@playwright/test", "typescript", "ts-node", "@types/node"],
+    "browser_installed": "chromium",
+    "initial_commit": "d854aef",
+    "created_at": "2026-04-16T14:24:00Z"
+}

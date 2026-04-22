@@ -1,0 +1,30 @@
+{
+    "agent": "test-runner-agent",
+    "model": "sonnet",
+    "max_turns": 15,
+    "filesystem": {
+        "read": ["tests/**", "memory/tickets/*"],
+        "write": ["memory/tickets/*/test-results.json", "memory/tickets/*/checkpoint.json", "memory/tickets/*/audit.md"]
+    },
+    "network": {
+        "allowed": ["stg.app.ox.security", "dev.app.ox.security"]
+    },
+    "jira": { "read": false, "write": false },
+    "git": { "read": true, "write": false },
+    "required_outputs": [
+        { "file": "test-results.json", "schema": "test-runner" }
+    ],
+    "credentials": [],
+    "exec": {
+        "allow_patterns": [
+            "envFile=* npx playwright test*",
+            "npx playwright test*",
+            "cd *",
+            "find *",
+            "cat *",
+            "python3 *",
+            "mkdir *",
+            "./scripts/report-to-dashboard.sh *"
+        ]
+    }
+}
